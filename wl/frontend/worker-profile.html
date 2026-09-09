@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>WorkLink - Worker Profile</title>
+
+    <link rel="stylesheet" href="css/worker-profile.css">
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <div class="logo">
+        <span>Work</span><b>Link</b>
+    </div>
+
+    <a href="worker-dashboard.html" class="back-btn">
+        ← Dashboard
+    </a>
+
+</header>
+
+
+<main class="profile-container">
+
+
+    <!-- ==============================
+         PROFILE HEADER
+    =============================== -->
+
+    <section class="profile-header">
+
+        <div class="big-avatar" id="avatar">
+            W
+        </div>
+
+        <div>
+
+            <h1 id="headerName">
+                Worker
+            </h1>
+
+            <p>
+                👷 Worker
+            </p>
+
+            <!-- ONLY ONE AVAILABILITY BUTTON -->
+            <button
+                id="availabilityBtn"
+                type="button"
+                class="availability-btn">
+                Available
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==============================
+         PERSONAL INFORMATION
+    =============================== -->
+
+    <section class="profile-card">
+
+        <div class="card-title">
+
+            <h2>
+                Personal Information
+            </h2>
+
+            <button
+                id="editBtn"
+                class="edit-btn"
+                type="button">
+
+                ✏️ Edit Profile
+
+            </button>
+
+        </div>
+
+
+        <!-- ==========================
+             VIEW MODE
+        =========================== -->
+
+        <div id="viewMode">
+
+            <div class="info-grid">
+
+                <div class="info-item">
+
+                    <label>
+                        Full Name
+                    </label>
+
+                    <p id="name">
+                        Loading...
+                    </p>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <label>
+                        Email
+                    </label>
+
+                    <p id="email">
+                        Loading...
+                    </p>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <label>
+                        Phone
+                    </label>
+
+                    <p id="phone">
+                        Loading...
+                    </p>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <label>
+                        Location
+                    </label>
+
+                    <p id="location">
+                        Loading...
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ==========================
+             EDIT MODE
+        =========================== -->
+
+        <div
+            id="editMode"
+            class="edit-mode hidden">
+
+            <div class="edit-grid">
+
+
+                <!-- NAME -->
+
+                <div class="input-group">
+
+                    <label>
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="editName"
+                        placeholder="Enter your full name">
+
+                </div>
+
+
+                <!-- EMAIL -->
+
+                <div class="input-group">
+
+                    <label>
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="editEmail"
+                        placeholder="Enter your email">
+
+                </div>
+
+
+                <!-- PHONE -->
+
+                <div class="input-group">
+
+                    <label>
+                        Phone
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="editPhone"
+                        placeholder="Enter your phone number"
+                        maxlength="10">
+
+                </div>
+
+
+                <!-- LOCATION -->
+
+                <div class="input-group">
+
+                    <label>
+                        Location
+                    </label>
+
+                    <input
+                        type="text"
+                        id="editLocation"
+                        placeholder="Enter your location">
+
+                </div>
+
+
+                <!-- SKILLS -->
+
+                <div class="input-group">
+
+                    <label>
+                        Skills
+                    </label>
+
+                    <input
+                        type="text"
+                        id="editSkill"
+                        placeholder="e.g. Plumber, Electrician, Painter">
+
+                </div>
+
+
+                <!-- CURRENT PASSWORD -->
+
+                <div class="input-group full-width">
+
+                    <label>
+                        Current Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="editPassword"
+                        placeholder="Enter your current password">
+
+                </div>
+
+            </div>
+
+
+            <div class="edit-actions">
+
+                <button
+                    id="cancelBtn"
+                    class="cancel-btn"
+                    type="button">
+
+                    Cancel
+
+                </button>
+
+
+                <button
+                    id="saveBtn"
+                    class="save-btn"
+                    type="button">
+
+                    💾 Save Changes
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==============================
+         SKILLS
+    =============================== -->
+
+    <section class="profile-card">
+
+        <div class="section-heading">
+
+            <h2>
+                Skills
+            </h2>
+
+        </div>
+
+        <div
+            class="skills"
+            id="skills">
+
+            <span>
+                Loading...
+            </span>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==============================
+         ABOUT
+    =============================== -->
+
+    <section class="profile-card">
+
+        <h2>
+            About Me
+        </h2>
+
+        <p class="about">
+            Experienced and hardworking worker looking
+            for suitable work opportunities through WorkLink.
+        </p>
+
+    </section>
+
+
+    <!-- ==============================
+         RATING
+    =============================== -->
+
+    <section class="profile-card rating-card">
+
+        <div>
+
+            <h2 id="ratingTitle">
+                Worker Rating
+            </h2>
+
+            <p id="ratingDescription">
+                Rating received from employers
+            </p>
+
+        </div>
+
+
+        <div class="rating">
+
+            <strong id="averageRating">
+                0.0
+            </strong>
+
+            <span>
+                ⭐
+            </span>
+
+            <small id="ratingCount">
+                0 ratings
+            </small>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==============================
+         RATE WORKER
+    =============================== -->
+
+    <div
+        id="rateSection"
+        style="
+            text-align:center;
+            margin-top:20px;
+            display:none;
+        ">
+
+        <button
+            id="rateBtn"
+            class="save-btn"
+            type="button">
+
+            ⭐ Rate Worker
+
+        </button>
+
+    </div>
+
+
+    <!-- ==============================
+         REVIEWS
+    =============================== -->
+
+    <section class="profile-card">
+
+        <div class="section-heading">
+
+            <div>
+
+                <h2>
+                    Reviews
+                </h2>
+
+                <p>
+                    Reviews from employers
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div id="reviewsList">
+
+            <p>
+                No reviews yet.
+            </p>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<script src="js/worker-profile.js"></script>
+
+</body>
+
+</html>

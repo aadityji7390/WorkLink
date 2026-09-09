@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>WorkLink - Find Bosses</title>
+
+    <link
+        rel="stylesheet"
+        href="css/find-worker.css"
+    >
+
+</head>
+
+
+<body>
+
+<header class="navbar">
+
+    <div class="logo">
+        <span>Work</span><b>Link</b>
+    </div>
+
+
+    <a
+        href="worker-dashboard.html"
+        class="back-btn"
+    >
+        ← Dashboard
+    </a>
+
+</header>
+
+
+<main class="container">
+
+    <section class="page-heading">
+
+        <p>
+            WORKLINK EMPLOYERS
+        </p>
+
+        <h1>
+            Find Employers 💼
+        </h1>
+
+        <span>
+            Search employers by name or company.
+        </span>
+
+    </section>
+
+
+    <section class="search-box">
+
+        <div class="search-input">
+
+            <span>
+                🔍
+            </span>
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search by employer name or company..."
+            >
+
+        </div>
+
+
+        <button
+            type="button"
+            id="searchBtn"
+            class="search-btn"
+        >
+            Search
+        </button>
+
+    </section>
+
+
+    <div class="results-header">
+
+        <div>
+
+            <h2>
+                Employers
+            </h2>
+
+            <p id="resultCount">
+                Loading employers...
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <section
+        class="jobs"
+        id="bossesContainer"
+    >
+    </section>
+
+
+    <div
+        id="noResults"
+        class="no-results"
+    >
+
+        <div class="no-results-icon">
+            🔍
+        </div>
+
+        <h3>
+            No employers found
+        </h3>
+
+        <p>
+            Try another name or company.
+        </p>
+
+    </div>
+
+</main>
+
+
+<script src="js/find-boss.js"></script>
+
+</body>
+
+</html>

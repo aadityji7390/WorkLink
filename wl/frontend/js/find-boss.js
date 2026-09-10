@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+    const API_BASE_URL = window.location.origin;
+
     const searchInput =
         document.getElementById("searchInput");
 
@@ -25,20 +27,23 @@ document.addEventListener("DOMContentLoaded", function () {
         const search =
             searchInput.value.trim();
 
-
         try {
 
             const response =
                 await fetch(
-                    API_BASE + "/api/bosses/search?q="
-                    +
+                    API_BASE_URL +
+                    "/api/bosses/search?q=" +
                     encodeURIComponent(search)
                 );
 
+            if (!response.ok) {
+                throw new Error(
+                    "Server returned " + response.status
+                );
+            }
 
             const data =
                 await response.json();
-
 
             if (!data.success) {
 
@@ -47,11 +52,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-
             displayBosses(
                 data.bosses
             );
-
 
         } catch (error) {
 
@@ -59,7 +62,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Boss Search Error:",
                 error
             );
-
 
             bossesContainer.innerHTML = "";
 
@@ -73,17 +75,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     // =====================================
-    // DISPLAY
+    // DISPLAY BOSSES
     // =====================================
 
     function displayBosses(bosses) {
 
         bossesContainer.innerHTML = "";
 
-
         if (
-            !bosses
-            ||
+            !bosses ||
             bosses.length === 0
         ) {
 
@@ -92,114 +92,104 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-
         noResults.style.display =
             "none";
 
-
         resultCount.textContent =
-            "Showing "
-            +
-            bosses.length
-            +
+            "Showing " +
+            bosses.length +
             " employer(s)";
 
 
-        bosses.forEach(
-            function (boss) {
+        bosses.forEach(function (boss) {
 
-                const card =
-                    document.createElement(
-                        "article"
-                    );
+            const card =
+                document.createElement("article");
 
-
-                card.className =
-                    "job-card";
+            card.className =
+                "job-card";
 
 
-                card.innerHTML = `
+            card.innerHTML = `
 
-                    <div class="job-main">
+                <div class="job-main">
 
-                        <div class="job-icon">
-                            💼
-                        </div>
+                    <div class="job-icon">
+                        💼
+                    </div>
 
-                        <div class="job-info">
+                    <div class="job-info">
 
-                            <h3>
-                                ${escapeHtml(boss.name)}
-                            </h3>
+                        <h3>
+                            ${escapeHtml(boss.name)}
+                        </h3>
 
-                            <p class="company">
-                                ${escapeHtml(boss.company)}
-                            </p>
+                        <p class="company">
+                            ${escapeHtml(boss.company)}
+                        </p>
 
-                            <p class="location">
-                                📱 ${escapeHtml(boss.phone)}
-                            </p>
+                        <p class="location">
+                            📱 ${escapeHtml(boss.phone)}
+                        </p>
 
-                            <div class="tags">
+                        <div class="tags">
 
-                                <span>
-                                    Employer
-                                </span>
+                            <span>
+                                Employer
+                            </span>
 
-                                <span>
-                                    WorkLink
-                                </span>
-
-                            </div>
+                            <span>
+                                WorkLink
+                            </span>
 
                         </div>
 
                     </div>
 
-
-                    <div class="job-side">
-
-                        <strong>
-                            💼
-                        </strong>
-
-                        <button
-                            type="button"
-                            class="details-btn"
-                        >
-                            View Profile
-                        </button>
-
-                    </div>
-
-                `;
+                </div>
 
 
-                const detailsBtn =
-                    card.querySelector(
-                        ".details-btn"
-                    );
+                <div class="job-side">
+
+                    <strong>
+                        💼
+                    </strong>
+
+                    <button
+                        type="button"
+                        class="details-btn"
+                    >
+                        View Profile
+                    </button>
+
+                </div>
+
+            `;
 
 
-                detailsBtn.addEventListener(
-                    "click",
-                    function () {
-
-                        window.location.href =
-                            "boss-profile.html?phone="
-                            +
-                            encodeURIComponent(
-                                boss.phone
-                            );
-                    }
+            const detailsBtn =
+                card.querySelector(
+                    ".details-btn"
                 );
 
 
-                bossesContainer.appendChild(
-                    card
-                );
-            }
-        );
+            detailsBtn.addEventListener(
+                "click",
+                function () {
+
+                    window.location.href =
+                        "boss-profile.html?phone=" +
+                        encodeURIComponent(
+                            boss.phone
+                        );
+
+                }
+            );
+
+
+            bossesContainer.appendChild(card);
+
+        });
     }
 
 
@@ -220,7 +210,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     // =====================================
-    // EVENTS
+    // SEARCH BUTTON
     // =====================================
 
     searchBtn.addEventListener(
@@ -229,50 +219,63 @@ document.addEventListener("DOMContentLoaded", function () {
     );
 
 
+    // =====================================
+    // ENTER KEY
+    // =====================================
+
     searchInput.addEventListener(
         "keydown",
         function (event) {
 
-            if (
-                event.key === "Enter"
-            ) {
+            if (event.key === "Enter") {
 
                 searchBosses();
+
             }
+
         }
     );
 
+
+    // =====================================
+    // EMPTY SEARCH
+    // =====================================
 
     searchInput.addEventListener(
         "input",
         function () {
 
             if (
-                searchInput.value.trim()
-                ===
-                ""
+                searchInput.value.trim() === ""
             ) {
 
                 searchBosses();
+
             }
+
         }
     );
 
 
     // =====================================
-    // ESCAPE
+    // ESCAPE HTML
     // =====================================
 
     function escapeHtml(value) {
 
-        return String(value)
+        return String(value ?? "")
             .replaceAll("&", "&amp;")
             .replaceAll("<", "&lt;")
             .replaceAll(">", "&gt;")
             .replaceAll('"', "&quot;")
             .replaceAll("'", "&#039;");
+
     }
 
+
+    // =====================================
+    // INITIAL LOAD
+    // =====================================
 
     searchBosses();
 

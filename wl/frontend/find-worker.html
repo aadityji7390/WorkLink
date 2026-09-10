@@ -12,7 +12,6 @@
 
     <title>WorkLink - Find Workers</title>
 
-    <!-- IMPORTANT: correct CSS file -->
     <link
         rel="stylesheet"
         href="css/find-worker.css"
@@ -23,582 +22,166 @@
 
 <body>
 
+<header class="navbar">
 
-    <!-- =====================================
-         NAVBAR
-    ====================================== -->
+    <div class="logo">
+        <span>Work</span><b>Link</b>
+    </div>
 
-    <header class="navbar">
+    <a
+        href="boss-dashboard.html"
+        class="back-btn"
+    >
+        ← Dashboard
+    </a>
 
-        <div class="logo">
-            <span>Work</span><b>Link</b>
-        </div>
-
-
-        <a
-            href="worker-dashboard.html"
-            class="back-btn"
-        >
-            ← Dashboard
-        </a>
-
-    </header>
+</header>
 
 
+<main class="container">
 
-    <!-- =====================================
-         MAIN CONTAINER
-    ====================================== -->
+    <section class="page-heading">
 
-    <main class="container">
+        <p>
+            WORKLINK WORKERS
+        </p>
+
+        <h1>
+            Find Workers 👷
+        </h1>
+
+        <span>
+            Search workers by name, skill or location.
+        </span>
+
+    </section>
 
 
-        <!-- =================================
-             PAGE HEADING
-        ================================== -->
+    <section class="search-box">
 
-        <section class="page-heading">
-
-            <p>
-                WORK OPPORTUNITIES
-            </p>
-
-            <h1>
-                Find the right work for you 🔍
-            </h1>
+        <div class="search-input">
 
             <span>
-                Search workers by name, skill or location.
+                🔍
             </span>
 
-        </section>
-
-
-
-        <!-- =================================
-             SEARCH
-        ================================== -->
-
-        <section class="search-box">
-
-
-            <div class="search-input">
-
-                <span>
-                    🔍
-                </span>
-
-
-                <input
-                    type="text"
-                    id="searchInput"
-                    placeholder="Search by worker name, skill or location..."
-                >
-
-            </div>
-
-
-            <button
-                type="button"
-                id="searchBtn"
-                class="search-btn"
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search by worker name, skill or location..."
             >
-                Search
-            </button>
-
-
-        </section>
-
-
-
-        <!-- =================================
-             FILTERS
-        ================================== -->
-
-        <section class="filters">
-
-
-            <button
-                type="button"
-                class="filter active"
-                data-filter="all"
-            >
-                All
-            </button>
-
-
-            <button
-                type="button"
-                class="filter"
-                data-filter="construction"
-            >
-                🏗️ Construction
-            </button>
-
-
-            <button
-                type="button"
-                class="filter"
-                data-filter="electrician"
-            >
-                🔧 Electrician
-            </button>
-
-
-            <button
-                type="button"
-                class="filter"
-                data-filter="plumber"
-            >
-                🔧 Plumber
-            </button>
-
-
-            <button
-                type="button"
-                class="filter"
-                data-filter="driver"
-            >
-                🚗 Driver
-            </button>
-
-
-        </section>
-
-
-
-        <!-- =================================
-             RESULTS HEADER
-        ================================== -->
-
-        <div class="results-header">
-
-
-            <div>
-
-                <h2>
-                    Available Work
-                </h2>
-
-
-                <p id="resultCount">
-                    Showing available opportunities
-                </p>
-
-            </div>
-
-
-            <select id="sortSelect">
-
-                <option value="default">
-                    Sort By
-                </option>
-
-
-                <option value="salary-high">
-                    Salary: High to Low
-                </option>
-
-
-                <option value="salary-low">
-                    Salary: Low to High
-                </option>
-
-            </select>
-
 
         </div>
 
-
-
-        <!-- =================================
-             JOBS
-        ================================== -->
-
-        <section
-            class="jobs"
-            id="jobsContainer"
+        <button
+            type="button"
+            id="searchBtn"
+            class="search-btn"
         >
+            Search
+        </button>
 
+    </section>
 
 
-            <!-- ===============================
-                 JOB 1
-            ================================= -->
+    <section class="filters">
 
-            <article
-                class="job-card"
-                data-category="construction"
-                data-location="lucknow"
-                data-title="construction worker"
-                data-salary="700"
-            >
-
-
-                <div class="job-main">
-
-
-                    <div class="job-icon">
-                        🏗️
-                    </div>
-
-
-                    <div class="job-info">
-
-
-                        <h3>
-                            Construction Worker
-                        </h3>
-
-
-                        <p class="company">
-                            Sharma Construction
-                        </p>
-
-
-                        <p class="location">
-                            📍 Lucknow, Uttar Pradesh
-                        </p>
-
-
-                        <div class="tags">
-
-                            <span>
-                                Full Time
-                            </span>
-
-                            <span>
-                                Construction
-                            </span>
-
-                            <span>
-                                Experienced
-                            </span>
-
-                        </div>
-
-
-                    </div>
-
-
-                </div>
-
-
-
-                <div class="job-side">
-
-
-                    <strong>
-                        ₹700
-                        <small>/day</small>
-                    </strong>
-
-
-                    <button
-                        type="button"
-                        class="details-btn"
-                    >
-                        View Details
-                    </button>
-
-
-                </div>
-
-
-            </article>
-
-
-
-            <!-- ===============================
-                 JOB 2
-            ================================= -->
-
-            <article
-                class="job-card"
-                data-category="electrician"
-                data-location="lucknow"
-                data-title="electrician"
-                data-salary="900"
-            >
-
-
-                <div class="job-main">
-
-
-                    <div class="job-icon">
-                        🔧
-                    </div>
-
-
-                    <div class="job-info">
-
-
-                        <h3>
-                            Electrician
-                        </h3>
-
-
-                        <p class="company">
-                            Kumar Electricals
-                        </p>
-
-
-                        <p class="location">
-                            📍 Lucknow, Uttar Pradesh
-                        </p>
-
-
-                        <div class="tags">
-
-                            <span>
-                                Part Time
-                            </span>
-
-                            <span>
-                                Electrical
-                            </span>
-
-                        </div>
-
-
-                    </div>
-
-
-                </div>
-
-
-
-                <div class="job-side">
-
-
-                    <strong>
-                        ₹900
-                        <small>/day</small>
-                    </strong>
-
-
-                    <button
-                        type="button"
-                        class="details-btn"
-                    >
-                        View Details
-                    </button>
-
-
-                </div>
-
-
-            </article>
-
-
-
-            <!-- ===============================
-                 JOB 3
-            ================================= -->
-
-            <article
-                class="job-card"
-                data-category="plumber"
-                data-location="lucknow"
-                data-title="plumber"
-                data-salary="800"
-            >
-
-
-                <div class="job-main">
-
-
-                    <div class="job-icon">
-                        🔧
-                    </div>
-
-
-                    <div class="job-info">
-
-
-                        <h3>
-                            Plumber
-                        </h3>
-
-
-                        <p class="company">
-                            City Maintenance
-                        </p>
-
-
-                        <p class="location">
-                            📍 Lucknow, Uttar Pradesh
-                        </p>
-
-
-                        <div class="tags">
-
-                            <span>
-                                Full Time
-                            </span>
-
-                            <span>
-                                Plumbing
-                            </span>
-
-                        </div>
-
-
-                    </div>
-
-
-                </div>
-
-
-
-                <div class="job-side">
-
-
-                    <strong>
-                        ₹800
-                        <small>/day</small>
-                    </strong>
-
-
-                    <button
-                        type="button"
-                        class="details-btn"
-                    >
-                        View Details
-                    </button>
-
-
-                </div>
-
-
-            </article>
-
-
-
-            <!-- ===============================
-                 JOB 4
-            ================================= -->
-
-            <article
-                class="job-card"
-                data-category="driver"
-                data-location="lucknow"
-                data-title="driver"
-                data-salary="1000"
-            >
-
-
-                <div class="job-main">
-
-
-                    <div class="job-icon">
-                        🚗
-                    </div>
-
-
-                    <div class="job-info">
-
-
-                        <h3>
-                            Delivery Driver
-                        </h3>
-
-
-                        <p class="company">
-                            Fast Delivery Services
-                        </p>
-
-
-                        <p class="location">
-                            📍 Lucknow, Uttar Pradesh
-                        </p>
-
-
-                        <div class="tags">
-
-                            <span>
-                                Full Time
-                            </span>
-
-                            <span>
-                                Driving
-                            </span>
-
-                        </div>
-
-
-                    </div>
-
-
-                </div>
-
-
-
-                <div class="job-side">
-
-
-                    <strong>
-                        ₹1000
-                        <small>/day</small>
-                    </strong>
-
-
-                    <button
-                        type="button"
-                        class="details-btn"
-                    >
-                        View Details
-                    </button>
-
-
-                </div>
-
-
-            </article>
-
-
-        </section>
-
-
-
-        <!-- =================================
-             NO RESULTS
-        ================================== -->
-
-        <div
-            id="noResults"
-            class="no-results"
+        <button
+            type="button"
+            class="filter active"
+            data-filter="all"
         >
+            All
+        </button>
+
+        <button
+            type="button"
+            class="filter"
+            data-filter="construction"
+        >
+            🏗️ Construction
+        </button>
+
+        <button
+            type="button"
+            class="filter"
+            data-filter="electrician"
+        >
+            🔧 Electrician
+        </button>
+
+        <button
+            type="button"
+            class="filter"
+            data-filter="plumber"
+        >
+            🔧 Plumber
+        </button>
+
+        <button
+            type="button"
+            class="filter"
+            data-filter="driver"
+        >
+            🚗 Driver
+        </button>
+
+    </section>
 
 
-            <div class="no-results-icon">
-                🔍
-            </div>
+    <div class="results-header">
 
+        <div>
 
-            <h3>
-                No work found
-            </h3>
+            <h2>
+                Available Workers
+            </h2>
 
-
-            <p>
-                Try another worker name, skill or location.
+            <p id="resultCount">
+                Loading workers...
             </p>
 
-
         </div>
 
-
-    </main>
-
+    </div>
 
 
-    <!-- =====================================
-         IMPORTANT: correct JS file
-    ====================================== -->
+    <!-- IMPORTANT:
+         No dummy workers here.
+         JavaScript will load workers from backend.
+    -->
 
-    <script src="js/find-worker.js"></script>
+    <section
+        class="jobs"
+        id="jobsContainer"
+    >
+    </section>
 
+
+    <div
+        id="noResults"
+        class="no-results"
+        style="display:none;"
+    >
+
+        <div class="no-results-icon">
+            🔍
+        </div>
+
+        <h3>
+            No workers found
+        </h3>
+
+        <p>
+            Try another worker name, skill or location.
+        </p>
+
+    </div>
+
+</main>
+
+
+<script src="js/find-worker.js"></script>
 
 </body>
 

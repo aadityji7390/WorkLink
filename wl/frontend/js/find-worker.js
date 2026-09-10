@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+    const API_BASE_URL = window.location.origin;
+
     const searchInput =
         document.getElementById("searchInput");
 
@@ -25,20 +27,23 @@ document.addEventListener("DOMContentLoaded", function () {
         const search =
             searchInput.value.trim();
 
-
         try {
 
             const response =
                 await fetch(
-                    API_BASE + "/api/workers/search?q="
-                    +
+                    API_BASE_URL +
+                    "/api/workers/search?q=" +
                     encodeURIComponent(search)
                 );
 
+            if (!response.ok) {
+                throw new Error(
+                    "Server returned " + response.status
+                );
+            }
 
             const data =
                 await response.json();
-
 
             if (!data.success) {
 
@@ -47,11 +52,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-
             displayWorkers(
                 data.workers
             );
-
 
         } catch (error) {
 
@@ -59,7 +62,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Worker Search Error:",
                 error
             );
-
 
             jobsContainer.innerHTML = "";
 
@@ -80,10 +82,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         jobsContainer.innerHTML = "";
 
-
         if (
-            !workers
-            ||
+            !workers ||
             workers.length === 0
         ) {
 
@@ -92,114 +92,104 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-
         noResults.style.display =
             "none";
 
-
         resultCount.textContent =
-            "Showing "
-            +
-            workers.length
-            +
+            "Showing " +
+            workers.length +
             " worker(s)";
 
 
-        workers.forEach(
-            function (worker) {
+        workers.forEach(function (worker) {
 
-                const card =
-                    document.createElement(
-                        "article"
-                    );
+            const card =
+                document.createElement("article");
 
-
-                card.className =
-                    "job-card";
+            card.className =
+                "job-card";
 
 
-                card.innerHTML = `
+            card.innerHTML = `
 
-                    <div class="job-main">
+                <div class="job-main">
 
-                        <div class="job-icon">
-                            👷
-                        </div>
+                    <div class="job-icon">
+                        👷
+                    </div>
 
-                        <div class="job-info">
+                    <div class="job-info">
 
-                            <h3>
-                                ${escapeHtml(worker.name)}
-                            </h3>
+                        <h3>
+                            ${escapeHtml(worker.name)}
+                        </h3>
 
-                            <p class="company">
-                                WorkLink Worker
-                            </p>
+                        <p class="company">
+                            WorkLink Worker
+                        </p>
 
-                            <p class="location">
-                                📍 ${escapeHtml(worker.location)}
-                            </p>
+                        <p class="location">
+                            📍 ${escapeHtml(worker.location)}
+                        </p>
 
-                            <div class="tags">
+                        <div class="tags">
 
-                                <span>
-                                    ${escapeHtml(worker.skill)}
-                                </span>
+                            <span>
+                                ${escapeHtml(worker.skill)}
+                            </span>
 
-                                <span>
-                                    Available
-                                </span>
-
-                            </div>
+                            <span>
+                                Available
+                            </span>
 
                         </div>
 
                     </div>
 
-
-                    <div class="job-side">
-
-                        <strong>
-                            👤
-                        </strong>
-
-                        <button
-                            class="details-btn"
-                            type="button"
-                        >
-                            View Profile
-                        </button>
-
-                    </div>
-
-                `;
+                </div>
 
 
-                const detailsBtn =
-                    card.querySelector(
-                        ".details-btn"
-                    );
+                <div class="job-side">
+
+                    <strong>
+                        👤
+                    </strong>
+
+                    <button
+                        class="details-btn"
+                        type="button"
+                    >
+                        View Profile
+                    </button>
+
+                </div>
+
+            `;
 
 
-                detailsBtn.addEventListener(
-                    "click",
-                    function () {
-
-                        window.location.href =
-                            "worker-profile.html?phone="
-                            +
-                            encodeURIComponent(
-                                worker.phone
-                            );
-                    }
+            const detailsBtn =
+                card.querySelector(
+                    ".details-btn"
                 );
 
 
-                jobsContainer.appendChild(
-                    card
-                );
-            }
-        );
+            detailsBtn.addEventListener(
+                "click",
+                function () {
+
+                    window.location.href =
+                        "worker-profile.html?phone=" +
+                        encodeURIComponent(
+                            worker.phone
+                        );
+
+                }
+            );
+
+
+            jobsContainer.appendChild(card);
+
+        });
     }
 
 
@@ -220,7 +210,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     // =====================================
-    // SEARCH
+    // SEARCH BUTTON
     // =====================================
 
     searchBtn.addEventListener(
@@ -229,32 +219,40 @@ document.addEventListener("DOMContentLoaded", function () {
     );
 
 
+    // =====================================
+    // ENTER KEY
+    // =====================================
+
     searchInput.addEventListener(
         "keydown",
         function (event) {
 
-            if (
-                event.key === "Enter"
-            ) {
+            if (event.key === "Enter") {
 
                 searchWorkers();
+
             }
+
         }
     );
 
+
+    // =====================================
+    // EMPTY SEARCH
+    // =====================================
 
     searchInput.addEventListener(
         "input",
         function () {
 
             if (
-                searchInput.value.trim()
-                ===
-                ""
+                searchInput.value.trim() === ""
             ) {
 
                 searchWorkers();
+
             }
+
         }
     );
 
@@ -265,12 +263,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function escapeHtml(value) {
 
-        return String(value)
+        return String(value ?? "")
             .replaceAll("&", "&amp;")
             .replaceAll("<", "&lt;")
             .replaceAll(">", "&gt;")
             .replaceAll('"', "&quot;")
             .replaceAll("'", "&#039;");
+
     }
 
 

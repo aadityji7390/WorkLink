@@ -1,0 +1,11 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>WorkLink - Post Work</title><link rel="stylesheet" href="css/register.css"></head><body>
+<div class="register-container"><div class="register-box"><div class="logo"><span>Work</span><b>Link</b></div><h1>Post New Work</h1><p class="subtitle">Create an opportunity for skilled workers</p>
+<form id="workForm">
+<div class="input-group"><label>Work Title</label><input id="title" required placeholder="e.g. Electrician needed"></div>
+<div class="input-group"><label>Category</label><select id="category"><option>Construction</option><option>Electrician</option><option>Plumber</option><option>Driver</option><option>Maintenance</option><option>Other</option></select></div>
+<div class="input-group"><label>Location</label><input id="location" required placeholder="City / Area"></div>
+<div class="input-group"><label>Pay per Day (₹)</label><input id="salary" type="number" min="1" required placeholder="800"></div>
+<div class="input-group"><label>Work Type</label><select id="type"><option>Full Time</option><option>Part Time</option><option>Contract</option></select></div>
+<div class="input-group"><label>Description</label><textarea id="description" required maxlength="600" placeholder="Describe the work, requirements and timing..." style="width:100%;min-height:110px;padding:12px;border:1px solid #ddd;border-radius:8px;box-sizing:border-box;"></textarea></div>
+<button class="register-btn" type="submit" id="postBtn">Post Work</button><p id="message" style="margin-top:12px;text-align:center;"></p></form>
+<a href="boss-dashboard.html" class="back-home">← Back to Dashboard</a></div></div><script src="js/security.js"></script><script src="js/post-work.js"></script></body></html>

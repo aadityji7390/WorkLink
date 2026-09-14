@@ -1,0 +1,9 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>WorkLink - Find Work</title><link rel="stylesheet" href="css/find-worker.css"></head><body>
+<header class="navbar"><div class="logo"><span>Work</span><b>Link</b></div><a href="worker-dashboard.html" class="back-btn">← Dashboard</a></header>
+<main class="container">
+<section class="page-heading"><p>WORK OPPORTUNITIES</p><h1>Find Work 🔍</h1><span>Search open jobs by title, company, skill or location.</span></section>
+<section class="search-box"><div class="search-input"><span>🔍</span><input id="searchInput" placeholder="Search jobs, company, category or location..."></div><button id="searchBtn" class="search-btn" type="button">Search</button></section>
+<section class="filters"><button class="filter active" data-filter="all">All</button><button class="filter" data-filter="construction">🏗️ Construction</button><button class="filter" data-filter="electrician">🔧 Electrician</button><button class="filter" data-filter="plumber">🔧 Plumber</button><button class="filter" data-filter="driver">🚗 Driver</button></section>
+<div class="results-header"><div><h2>Available Work</h2><p id="resultCount">Loading work...</p></div><select id="sortSelect"><option value="default">Sort By</option><option value="salary-high">Salary: High to Low</option><option value="salary-low">Salary: Low to High</option></select></div>
+<section class="jobs" id="jobsContainer"></section><div id="noResults" class="no-results" style="display:none"><div class="no-results-icon">🔍</div><h3>No work found</h3><p>Try another search or filter.</p></div>
+</main><script src="js/security.js"></script><script src="js/find-work.js"></script></body></html>

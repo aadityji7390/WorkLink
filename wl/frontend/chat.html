@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WorkLink - Chat</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+body{background:#f5f7fb}.chat-wrap{max-width:760px;margin:30px auto;padding:0 16px}.chat-card{background:#fff;border-radius:18px;box-shadow:0 8px 30px rgba(0,0,0,.08);overflow:hidden}.chat-head{padding:18px 20px;border-bottom:1px solid #eee;display:flex;align-items:center;gap:12px}.chat-head h2{margin:0;font-size:20px}.chat-head small{display:block;color:#777;margin-top:3px}.back{border:0;background:#eef2ff;border-radius:9px;padding:9px 12px;cursor:pointer}.messages{height:55vh;min-height:360px;overflow:auto;padding:18px;background:#f8fafc}.msg{max-width:75%;padding:10px 13px;border-radius:14px;margin:8px 0;line-height:1.45;word-break:break-word}.mine{margin-left:auto;background:#2563eb;color:white;border-bottom-right-radius:4px}.theirs{background:white;border:1px solid #e5e7eb;border-bottom-left-radius:4px}.time{font-size:10px;opacity:.7;margin-top:4px}.composer{display:flex;gap:10px;padding:14px;border-top:1px solid #eee}.composer textarea{flex:1;resize:none;border:1px solid #ddd;border-radius:12px;padding:11px;min-height:44px;font:inherit}.composer button{border:0;border-radius:12px;padding:0 18px;background:#2563eb;color:white;font-weight:600;cursor:pointer}.status{text-align:center;color:#777;padding:8px;font-size:13px}
+</style>
+</head>
+<body>
+<div class="chat-wrap"><div class="chat-card">
+<header class="chat-head"><button class="back" id="backBtn">← Back</button><div><h2 id="peerName">Chat</h2><small>WorkLink private chat</small></div></header>
+<div id="status" class="status">Loading messages...</div><main id="messages" class="messages"></main>
+<form id="chatForm" class="composer"><textarea id="messageInput" maxlength="1000" placeholder="Type your message..." required></textarea><button type="submit" id="sendBtn">Send</button></form>
+</div></div>
+<script src="js/security.js"></script><script src="js/chat.js"></script>
+</body></html>

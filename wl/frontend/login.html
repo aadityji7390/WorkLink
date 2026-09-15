@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>WorkLink - Login</title>
+
+    <link
+        rel="stylesheet"
+        href="css/login.css"
+    >
+
+</head>
+
+<body>
+
+    <div class="login-container">
+
+        <div class="login-box">
+
+            <!-- Logo -->
+
+            <div class="logo">
+                <span>Work</span><b>Link</b>
+            </div>
+
+
+            <!-- Heading -->
+
+            <h1>Welcome Back</h1>
+
+            <p class="subtitle">
+                Login to continue to WorkLink
+            </p>
+
+
+            <!-- Login Form -->
+
+            <form id="loginForm">
+
+
+                <!-- Phone Number -->
+
+                <div class="input-group">
+
+                    <label for="phone">
+                        Phone Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        placeholder="Enter your 10-digit phone number"
+                        maxlength="10"
+                        pattern="[0-9]{10}"
+                        inputmode="numeric"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Password -->
+
+                <div class="input-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Enter your password"
+                        minlength="4"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Login Role -->
+
+                <div class="role-section">
+
+                    <p>Login as</p>
+
+                    <div class="role-options">
+
+
+                        <!-- Worker -->
+
+                        <label class="role-card">
+
+                            <input
+                                type="radio"
+                                name="role"
+                                value="worker"
+                                checked
+                            >
+
+                            <span>👷</span>
+
+                            <strong>
+                                Worker
+                            </strong>
+
+                        </label>
+
+
+                        <!-- Boss -->
+
+                        <label class="role-card">
+
+                            <input
+                                type="radio"
+                                name="role"
+                                value="boss"
+                            >
+
+                            <span>💼</span>
+
+                            <strong>
+                                Boss
+                            </strong>
+
+                        </label>
+
+
+                    </div>
+
+                </div>
+
+
+                <!-- Error / Status Message -->
+
+                <p
+                    id="loginMessage"
+                    class="login-message"
+                ></p>
+
+
+                <!-- Login Button -->
+
+                <button
+                    type="submit"
+                    class="login-btn"
+                    id="loginBtn"
+                >
+                    Login
+                </button>
+
+
+            </form>
+
+
+            <!-- Register -->
+
+            <p class="register-text">
+
+                Don't have an account?
+
+                <a href="register.html">
+                    Create Account
+                </a>
+
+            </p>
+
+
+            <!-- Back -->
+
+            <a
+                href="index.html"
+                class="back-home"
+            >
+                ← Back to Home
+            </a>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- JavaScript -->
+
+    <script src="js/security.js"></script>
+    <script src="js/login.js"></script>
+
+</body>
+
+</html>

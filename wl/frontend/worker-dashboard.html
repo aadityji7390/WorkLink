@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WorkLink - Worker Dashboard</title>
+    <link rel="stylesheet" href="css/worker-dashboard.css">
+</head>
+
+<body>
+
+<header class="navbar">
+    <div class="logo">
+        <span>Work</span><b>Link</b>
+    </div>
+
+    <div class="nav-right">
+
+        <button class="notification" type="button" id="notificationBtn" aria-label="Notifications">🔔<span id="notificationBadge" class="notification-badge" style="display:none">0</span></button>
+
+        <div class="profile-mini"
+             onclick="window.location.href='worker-profile.html'">
+
+            <div class="avatar" id="dashboardAvatar">A</div>
+
+            <div>
+                <strong id="dashboardName">Worker</strong>
+                <small>Worker</small>
+            </div>
+
+        </div>
+
+        <button
+            id="logoutBtn"
+            type="button"
+            style="
+                margin-left:12px;
+                padding:9px 14px;
+                border:none;
+                border-radius:8px;
+                background:#ef4444;
+                color:white;
+                cursor:pointer;
+                font-weight:600;
+            ">
+            Logout
+        </button>
+
+    </div>
+</header>
+
+
+<main class="dashboard">
+
+    <section class="welcome">
+        <div>
+
+            <p class="welcome-small">Worker Dashboard</p>
+
+            <h1>
+                Hello, <span id="welcomeName">Worker</span> 👋
+            </h1>
+
+            <p>
+                Find the right work opportunity and build your career with WorkLink.
+            </p>
+
+        </div>
+
+        <div class="welcome-icon">👷</div>
+    </section>
+
+
+    <section class="quick-section">
+
+        <h2>Quick Actions</h2>
+
+        <div class="quick-grid">
+
+            <a href="worker-profile.html" class="action-card">
+
+                <div class="action-icon">👤</div>
+
+                <div>
+                    <h3>My Profile</h3>
+                    <p>View and edit your profile</p>
+                </div>
+
+            </a>
+
+
+            <a href="find-boss.html" class="action-card">
+                <div class="action-icon">💼</div>
+                <div>
+                    <h3>Find Employers</h3>
+                    <p>Search companies and employers</p>
+                </div>
+            </a>
+
+
+
+
+        </div>
+
+    </section>
+
+
+    <section class="chat-dashboard-section">
+        <div class="chat-dashboard-card">
+            <div class="chat-dashboard-icon">💬</div>
+            <div class="chat-dashboard-content">
+                <span class="section-kicker">COMMUNICATION</span>
+                <h2>Messages & Chat</h2>
+                <p>Chat directly with employers after viewing their profile.</p>
+            </div>
+            <a href="find-boss.html" class="chat-dashboard-btn">Find Employer & Chat →</a>
+        </div>
+    </section>
+
+
+    <section class="stats">
+
+        <div class="stat-card">
+            <span>💼</span>
+
+            <div>
+                <strong>0</strong>
+                <p>Jobs Completed</p>
+            </div>
+        </div>
+
+
+        <div class="stat-card">
+            <span>⭐</span>
+
+            <div>
+                <strong id="myRating">0.0</strong>
+                <p>My Rating</p>
+            </div>
+        </div>
+
+
+        <div class="stat-card">
+            <span>📩</span>
+
+            <div>
+                <strong>0</strong>
+                <p>Applications</p>
+            </div>
+        </div>
+
+    </section>
+
+
+    <section class="jobs-section employers-recommended-section">
+        <div class="section-heading">
+            <div>
+                <span class="section-kicker">SMART MATCHES</span>
+                <h2>Recommended Employers</h2>
+                <p>Available employers and their active work opportunities.</p>
+            </div>
+            <a href="find-boss.html">Find All →</a>
+        </div>
+        <div id="recommendedBosses" class="recommended-bosses-grid"></div>
+        <div id="recommendedEmpty" class="dashboard-empty" style="display:none">
+            <div>💼</div><strong>No employers available right now</strong>
+            <span>Check Find Employers for the latest opportunities.</span>
+        </div>
+    </section>
+
+    <div id="notificationPanel" class="notification-panel" aria-hidden="true">
+        <div class="notification-panel-head"><div><span class="section-kicker">UPDATES</span><h3>Notifications</h3></div><button id="closeNotification" type="button">×</button></div>
+        <div id="notificationList" class="notification-list"></div>
+    </div>
+</main>
+
+
+<nav class="bottom-nav">
+
+    <a href="worker-dashboard.html" class="active">
+        🏠
+        <span>Home</span>
+    </a>
+
+    <a href="find-boss.html">
+        💼
+        <span>Find Employers</span>
+    </a>
+
+    <a href="worker-profile.html">
+        👤
+        <span>Profile</span>
+    </a>
+
+</nav>
+
+
+<script src="js/security.js"></script>
+    <script src="js/worker-dashboard.js"></script>
+
+</body>
+</html>

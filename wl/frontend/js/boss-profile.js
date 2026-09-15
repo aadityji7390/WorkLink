@@ -159,7 +159,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 const r = await fetch("/api/boss/availability", {
                     method: "POST",
                     headers: {"Content-Type":"application/json", ...(token ? {Authorization:"Bearer "+token} : {})},
-                    body: JSON.stringify({available: !current})
+                    body: JSON.stringify({available: !current ? "available" : "unavailable"})
                 });
                 const d = await r.json();
                 if (d.success) renderAvailability(d.available);

@@ -472,7 +472,7 @@ document.addEventListener("DOMContentLoaded", async function(){
  if(!btn||!token)return;
  function render(v){btn.textContent=v?"● Available":"○ Unavailable";btn.classList.toggle("is-unavailable",!v);btn.setAttribute("aria-pressed",String(!!v));}
  try{const r=await fetch("/api/boss/availability",{headers:{Authorization:"Bearer "+token}});const d=await r.json();if(d.success)render(d.available);}catch(e){}
- btn.addEventListener("click",async()=>{btn.disabled=true;try{const now=!btn.classList.contains("is-unavailable");const r=await fetch("/api/boss/availability",{method:"POST",headers:{"Content-Type":"application/json",Authorization:"Bearer "+token},body:JSON.stringify({available:!now})});const d=await r.json();if(d.success)render(d.available);}finally{btn.disabled=false;}});
+ btn.addEventListener("click",async()=>{btn.disabled=true;try{const now=!btn.classList.contains("is-unavailable");const r=await fetch("/api/boss/availability",{method:"POST",headers:{"Content-Type":"application/json",Authorization:"Bearer "+token},body:JSON.stringify({available: !now ? "available" : "unavailable"});const d=await r.json();if(d.success)render(d.available);}finally{btn.disabled=false;}});
 
  const bell=document.getElementById("notificationBtn"), badge=document.getElementById("notificationBadge"), panel=document.getElementById("notificationPanel"), list=document.getElementById("notificationList"), close=document.getElementById("closeNotification");
  const esc=v=>String(v??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;", "'":"&#039;"}[m]));
